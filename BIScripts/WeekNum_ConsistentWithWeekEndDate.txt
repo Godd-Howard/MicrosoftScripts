@@ -1,0 +1,1 @@
+WeekNum_ConsistentWithWeekEndDate = WEEKNUM(vwDateOfRecordDimension[WeekEnd_Date],1)

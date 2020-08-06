@@ -1,0 +1,4 @@
+Current_Year = 
+IF ( OR( YEAR( TODAY() ) = YEAR( vwDateOfRecordDimension[WeekEnd_Date] ), YEAR( TODAY() ) = YEAR( vwDateOfRecordDimension[WeekStart_Date] ) ),
+    1,
+    0 )

@@ -1,0 +1,5 @@
+CurrentMonthNumber_Check = 
+VAR isMonth =
+    FORMAT ( NOW (), "mm" )
+RETURN
+    IF ( isMonth = vwDateOfRecordDimension[DateOfRecord_Month] , 1, 0 )

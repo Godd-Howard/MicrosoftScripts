@@ -1,0 +1,7 @@
+CurrentMonthNumber_Check&LessThanDOM = 
+VAR isMonth =
+    FORMAT ( NOW (), "mm" )
+VAR day =
+    FORMAT ( NOW (), "dd" )
+RETURN
+    IF ( AND( isMonth = vwDateOfRecordDimension[DateOfRecord_Month], vwDateOfRecordDimension[DateOfRecord_DOM] <= day ), 1, 0 )

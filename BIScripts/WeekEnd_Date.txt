@@ -1,0 +1,1 @@
+WeekEnd_Date = vwDateOfRecordDimension[DateOfRecord_Date] - WEEKDAY(vwDateOfRecordDimension[DateOfRecord_Date], 1) + 7

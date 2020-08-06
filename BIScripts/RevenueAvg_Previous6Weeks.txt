@@ -1,0 +1,14 @@
+RevenueAvg_Previous6Weeks = 
+VAR flag =
+    LASTNONBLANK (
+        vwDateOfRecordDimension[Last6Weeks],
+        vwDateOfRecordDimension[Last6Weeks]
+    )
+RETURN
+    CALCULATE (
+        SUM ( dwFacts_TripOrderSnapshot[Total_Revenue] ),
+        FILTER (
+            ALL ( vwDateOfRecordDimension ),
+            vwDateOfRecordDimension[Last6Weeks] = flag
+        )
+    ) / 6

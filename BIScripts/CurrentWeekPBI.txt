@@ -1,0 +1,5 @@
+Current_Week = 
+VAR IsYear = IF( YEAR( TODAY() ) = VALUE( vwDateOfRecordDimension[DateOfRecord_Year] ), TRUE(), FALSE() )
+VAR IsWeek = IF( WEEKNUM( TODAY() ) = vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate], TRUE(), FALSE() )
+RETURN
+IF( AND( IsYear, IsWeek ), 1, 0 )

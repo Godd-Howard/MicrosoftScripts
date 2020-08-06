@@ -1,0 +1,1 @@
+IncomingLoads = CALCULATE(SUM(dwFacts_TripDetail[Order_Pct]), USERELATIONSHIP(vwEndGeographyBridgeDimension[Geography_Key], dwGeographyDimension[Geography_Key]))

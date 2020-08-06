@@ -1,0 +1,31 @@
+Last36Weeks = 
+VAR V_Week =
+    WEEKNUM ( TODAY (), 1 ) - 1
+VAR V_WeeksBack = 35
+VAR weekVariance = V_Week - V_WeeksBack
+VAR w =
+    weekVariance + 52
+RETURN
+    IF (
+        CALCULATE (
+            MAX ( vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate] ),
+            vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate]
+        ) >= V_Week - V_WeeksBack
+            && YEAR ( TODAY () ) = YEAR ( vwDateOfRecordDimension[WeekEnd_Date] )
+            && CALCULATE (
+                MAX ( vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate] ),
+                vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate]
+            ) <= V_Week,
+        1,
+        IF (
+            weekVariance < 0
+                && CALCULATE (
+                    MAX ( vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate] ),
+                    vwDateOfRecordDimension[WeekNum_ConsistentWithWeekEndDate]
+                ) >= w
+                && YEAR ( TODAY () ) - 1
+                    = YEAR ( vwDateOfRecordDimension[WeekEnd_Date] ),
+            1,
+            0
+        )
+    )

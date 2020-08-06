@@ -1,0 +1,9 @@
+Revenue_PreviousYear = 
+CALCULATE (
+    SUM ( dwFacts_TripDetail[Linehaul_Revenue] )
+        + SUM ( dwFacts_TripDetail[Fuel_Revenue] )
+        + SUM ( dwFacts_TripDetail[Accessorial_Revenue] )
+        + SUM ( dwFacts_TripDetail[Problem_Revenue] )
+        + SUM ( dwFacts_TripDetail[Performance_Revenue] ),
+    DATEADD ( vwDateOfRecordDimension[DateOfRecord_Date], -1, YEAR )
+)
